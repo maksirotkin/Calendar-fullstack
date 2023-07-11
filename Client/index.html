@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="uk" lang="en">
+<head>
+    <meta lang="uk" >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css">
+    <title>Calendar</title>   
+</head>
+<body>
+  <div class="btnContainer">
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+        Увійти
+      </button>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" id="SaveEventsbtn">
+        Зберегти події
+      </button>
+    </div>
+      <!-- Модальне вікно логіну та реєстрації -->
+      <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="loginModalLabel">Увійти</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Форма логіну -->
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="loginUsername" class="form-label">Ім'я</label>
+                  <input type="text" class="form-control" id="loginUsername" placeholder="Введіть ім'я">
+                </div>
+                <div class="mb-3">
+                  <label for="loginPassword" class="form-label">Пароль</label>
+                  <input type="password" class="form-control" id="loginPassword" placeholder="Введіть пароль"autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary" id="loginSubmit">Увійти</button>
+                <button type="button" class="btn btn-link" id="showRegistrationForm">Зареєструватися</button>
+              </form>             
+              <!-- Форма реєстрації (початково прихована) -->
+              <form id="registrationForm" style="display: none;">
+                <div class="mb-3">
+                  <label for="registerUsername" class="form-label">Ім'я</label>
+                  <input type="text" class="form-control" id="registerUsername" placeholder="Введіть ім'я" >
+                </div>
+                <div class="mb-3">
+                  <label for="registerPassword" class="form-label">Пароль</label>
+                  <input type="password" class="form-control" id="registerPassword" placeholder="Введіть пароль" autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary" id="RegistrationSubmit">Зареєструватися</button>
+                <button type="button" class="btn btn-link" id="showLoginForm">Увійти</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+        <div class="conteiner">
+            <div class="left">
+                <div class="today-date">
+                    <div class="event-day">Пн</div>
+                    <div class="event-date">15 Травння 2023</div>
+                </div>
+                <div class="events">                    
+                </div>
+                <div class="add-event-wrapper ">
+                    <div class="add-event-header">
+                        <div class="title">Додати подію</div>
+                        <i class="fas fa-times close"></i>
+                    </div>
+                    <div class="add-event-body">
+                        <div class="add-event-input">
+                            <input type="text" placeholder="Назва" class="event-name">
+                        </div>
+                        <div class="add-event-input">
+                            <input type="text" placeholder="Початок" 
+                            class="event-time-from">
+                        </div>
+                        <div class="add-event-input">
+                            <input type="text" placeholder="Кінець" class="event-time-to">
+                        </div>
+                    </div>
+                    <div class="add-event-footer">
+                        <button class="add-event-btn">Зберегти</button>
+                    </div>
+                </div>                    
+            </div>
+            <div class="right">
+                <div class="calendar">
+                    <div class="month">
+                        <i class="fas fa-angle-left prev"></i>
+                        <div class="date">Листопад 2023</div>
+                        <i class="fas fa-angle-right next"></i>
+                    </div>  
+                    <div class="weekdays">                                          
+                        <div>пн</div>
+                        <div>вт</div>
+                        <div>ср</div>
+                        <div>чт</div>
+                        <div>пт</div>
+                        <div>сб</div>
+                        <div>нд</div>                        
+                    </div>  
+                    <div class="days"></div>   
+                    <div class="goto-today">
+                        <div class="goto">
+                            <input type="text" placeholder="mm/yyyy" class="date-input">
+                            <button class="goto-btn">Перейти</button>
+                        </div>
+                        <button class="today-btn">Сьогодні</button>
+                    </div> 
+                </div>
+            </div>
+            <button class="add-event">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+    <script>document.body.classList.add('modal-open');</script>
+    <script>  
+      document.getElementById('showRegistrationForm').addEventListener('click', function() {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('registrationForm').style.display = 'block';
+      });
+  
+      document.getElementById('showLoginForm').addEventListener('click', function() {
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('registrationForm').style.display = 'none';
+      });
+    </script>
+    <script  src="script.js"></script>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js"></script>
+</body>
+</html>

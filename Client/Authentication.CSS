@@ -1,0 +1,56 @@
+#loginForm {
+    margin-bottom: 20px;
+  }
+
+  #loginForm .form-label {
+    font-weight: bold;
+  }
+  
+  /* Стилі для форми реєстрації */
+  #registrationForm {
+    display: none;
+    margin-bottom: 20px;
+  }
+  
+  #registrationForm .form-label {
+    font-weight: bold;
+  }
+  
+  /* Стилі для кнопок "Увійти" та "Зареєструватися" */
+  #showRegistrationForm,
+  #showLoginForm {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  
+  /* Додаткові стилі для оформлення форм */
+  .modal-header {
+    
+    border-bottom: none;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .btn-primary .modal{
+    background-color: #007bff;
+    border-color: #007bff;
+    font-size: 0.5rem
+  }
+  
+  .btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+  @media (max-width: 600px){
+    .form-area{
+        padding: 1.5em;
+    }
+    .form-area h1{
+        font-size: 18px;
+    }
+  }
